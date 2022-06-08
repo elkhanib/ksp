@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -81,5 +82,25 @@ class CommandIntegrationTest {
                 .andExpect(jsonPath("$.message", equalTo("Argument validation failed")))
                 .andExpect(jsonPath("$.errors.[0].property", equalTo("link")))
                 .andExpect(jsonPath("$.errors.[0].message", equalTo("value cannot be a null or an empty")));
+    }
+
+    @Test
+    @DisplayName("it partially updates ted-talk by id")
+    void update() throws Exception {
+        //Arrange
+        var request = "{\"talkDate\": \"2033-12-01\",\"author\": \"Elkhan Ibrahimov\"}";
+
+        //Act
+        mockMvc.perform(patch(BASE_URL + "/200")
+                .content(request)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", equalTo(200)))
+                .andExpect(jsonPath("$.title", equalTo("A more accurate way to calculate emissions")))
+                .andExpect(jsonPath("$.author", equalTo("Elkhan Ibrahimov")))
+                .andExpect(jsonPath("$.talkDate", equalTo("2033-12-01")))
+                .andExpect(jsonPath("$.viewCount", equalTo(1400000)))
+                .andExpect(jsonPath("$.likeCount", equalTo(43000)))
+                .andExpect(jsonPath("$.link", equalTo("https://ted.com/talks/charlotte_degot_a_more_accurate_way_to_calculate_emissions")));
     }
 }
