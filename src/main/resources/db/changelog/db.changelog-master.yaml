@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - includeAll:
+      path: db/changelog/1.0-ted-talk-entities/
+  - includeAll:
+      path: db/changelog/2.0-import-ted-talk-data/

@@ -1,0 +1,78 @@
+databaseChangeLog:
+  - changeSet:
+      id: '2.0-20220605-01'
+      author: 'Elkhan Ibrahimov'
+      description: "imports existing data into ted_talk table"
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: 'title'
+                  name: TITLE
+                  type: VARCHAR
+              - column:
+                  header: 'author'
+                  name: AUTHOR
+                  type: VARCHAR
+                  defaultOnNull: true
+                  defaultValue: 'Unknown'
+              - column:
+                  header: 'date'
+                  name: TALK_DATE
+                  type: VARCHAR
+              - column:
+                  header: 'views'
+                  name: VIEWS
+                  type: NUMERIC
+              - column:
+                  header: 'likes'
+                  name: LIKES
+                  type: NUMERIC
+              - column:
+                  header: 'link'
+                  name: LINK
+                  type: VARCHAR
+            encoding: UTF-8
+            file: data.csv
+            quotchar: '"'
+            relativeToChangelogFile: true
+            separator: ;
+            tableName: TED_TALK
+            usePreparedStatements: false #issue: https://github.com/liquibase/liquibase/issues/1551
+  - changeSet:
+      id: '2.0-20220605-02'
+      author: 'Elkhan Ibrahimov'
+      description: "altering table to add a new column in DATE type"
+      changes:
+        - addColumn:
+            tableName: TED_TALK
+            columns:
+              - column:
+                  name: TALK_DATE_NEW
+                  type: DATE
+  - changeSet:
+      id: '2.0-20220605-03'
+      author: 'Elkhan Ibrahimov'
+      description: "migrates talk_date values to a newly added column"
+      changes:
+        - update:
+            tableName: TED_TALK
+            columns:
+              - column:
+                  name: TALK_DATE_NEW
+                  valueComputed: PARSEDATETIME(TALK_DATE, 'dd MMMM yyyy')
+  - changeSet:
+      id: '2.0-20220605-04'
+      author: 'Elkhan Ibrahimov'
+      description: "deletes legacy column and renames newly added column"
+      changes:
+        - dropColumn:
+            tableName: TED_TALK
+            columns:
+              - column:
+                  name: TALK_DATE
+        - renameColumn:
+            tableName: TED_TALK
+            oldColumnName: TALK_DATE_NEW
+            newColumnName: TALK_DATE
+            columnDataType: DATE

@@ -1,0 +1,74 @@
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+import com.bmuschko.gradle.docker.tasks.image.Dockerfile
+
+plugins {
+    id 'org.springframework.boot' version "$springBootVersion"
+    id 'io.spring.dependency-management' version "$springDMVersion"
+    id 'com.bmuschko.docker-remote-api' version "$bmuschkoDockerVersion" apply false
+    id 'java'
+}
+
+group = 'com.iodigital.ksp'
+version = '1.0.0'
+sourceCompatibility = '11'
+
+apply plugin: 'java'
+apply plugin: 'com.bmuschko.docker-remote-api'
+sourceCompatibility = 11
+targetCompatibility = 11
+assert System.properties['java.specification.version'] == '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-validation:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+    implementation "org.springdoc:springdoc-openapi-data-rest:${openApiVersion}"
+    implementation "org.springdoc:springdoc-openapi-ui:${openApiVersion}"
+    implementation "org.liquibase:liquibase-core:${liquibaseVersion}"
+    implementation "org.modelmapper:modelmapper:${modelmapperVersion}"
+
+    implementation "org.hibernate:hibernate-ehcache:${hibernateEhCacheVersion}"
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    runtimeOnly "mysql:mysql-connector-java:${mysqlVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}") {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+    testImplementation "com.h2database:h2:${h2DbVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task dockerFile(type: Dockerfile, dependsOn: assemble) {
+    destFile.set(project.file('Dockerfile'))
+    from "alpine:$alpineVersion"
+    runCommand 'apk add --no-cache openjdk11'
+    copyFile "build/libs/ksp-1.0.0.jar", '/app/'
+    workingDir '/app/'
+    entryPoint 'java'
+    defaultCommand '-jar', "/app/ksp-1.0.0.jar"
+}
+
+task dockerBuild(type: DockerBuildImage, dependsOn: dockerFile) {
+    inputDir.set(file("$projectDir/."))
+    doLast {
+        println("creatig image: $dockerRepoUrl/${project.name}:$version")
+    }
+    images.add("$dockerRepoUrl/${project.name}:$version")
+}

@@ -1,0 +1,1250 @@
+{
+	"info": {
+		"_postman_id": "859dedd1-9420-4c60-9f77-d380e57e1969",
+		"name": "KSP API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "v1/ted-talks",
+			"item": [
+				{
+					"name": "Get a Ted-talk by its id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/ted-talks/3043",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"ted-talks",
+								"3043"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "-9847199",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "-9847199",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "-9847199",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Adds a new TedTalk",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Year In Ideas 2015\",\n    \"author\": \"Unknown\",\n    \"talkDate\": \"2022-12-01\",\n    \"viewCount\": 5,\n    \"likeCount\": 2,\n    \"link\": \"https://ted.com/talks/year_in_ideas_2015\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/ted-talks/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"ted-talks",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "-9847199",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "-9847199",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "-9847199",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get list of talks by view counts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/ted-talks/by-views?from=500&until=1300&size=15",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"ted-talks",
+								"by-views"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "500",
+									"description": "(Required) "
+								},
+								{
+									"key": "until",
+									"value": "1300",
+									"description": "(Required) "
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "(Required) ",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "15",
+									"description": "(Required) "
+								},
+								{
+									"key": "sort",
+									"value": "[\"Excepteur est dolore nulla\",\"dolore ad Lorem Duis\"]",
+									"description": "(Required) ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/by-views?from=-9847199&until=-9847199&page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"by-views"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "-9847199"
+										},
+										{
+											"key": "until",
+											"value": "-9847199"
+										},
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/by-views?from=-9847199&until=-9847199&page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"by-views"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "-9847199"
+										},
+										{
+											"key": "until",
+											"value": "-9847199"
+										},
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/by-views?from=-9847199&until=-9847199&page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"by-views"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "-9847199"
+										},
+										{
+											"key": "until",
+											"value": "-9847199"
+										},
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Getting all Ted talks by title",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/ted-talks/by-title?title=Virtual Choi",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"ted-talks",
+								"by-title"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Virtual Choi",
+									"description": "(Required) "
+								},
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "(Required) ",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "[\"<string>\",\"<string>\"]",
+									"description": "(Required) ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/by-title?title=sed nostrud&page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"by-title"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "sed nostrud"
+										},
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/by-title?title=sed nostrud&page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"by-title"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "sed nostrud"
+										},
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/by-title?title=sed nostrud&page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"by-title"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "sed nostrud"
+										},
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get list of talks by like counts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/ted-talks/by-likes?from=100&until=150&size=15",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"ted-talks",
+								"by-likes"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "100",
+									"description": "(Required)"
+								},
+								{
+									"key": "until",
+									"value": "150",
+									"description": "(Required) "
+								},
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "(Required) ",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "15",
+									"description": "(Required) "
+								},
+								{
+									"key": "sort",
+									"value": "[\"<string>\",\"<string>\"]",
+									"description": "(Required) ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/by-likes?from=-9847199&until=-9847199&page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"by-likes"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "-9847199"
+										},
+										{
+											"key": "until",
+											"value": "-9847199"
+										},
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/by-likes?from=-9847199&until=-9847199&page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"by-likes"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "-9847199"
+										},
+										{
+											"key": "until",
+											"value": "-9847199"
+										},
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/by-likes?from=-9847199&until=-9847199&page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"by-likes"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "-9847199"
+										},
+										{
+											"key": "until",
+											"value": "-9847199"
+										},
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Getting all Ted talks by author",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/ted-talks/by-author?author=Özlem&size=15",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"ted-talks",
+								"by-author"
+							],
+							"query": [
+								{
+									"key": "author",
+									"value": "Özlem",
+									"description": "(Required) "
+								},
+								{
+									"key": "page",
+									"value": "<integer>",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "15"
+								},
+								{
+									"key": "sort",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/by-author?author=sed nostrud&page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"by-author"
+									],
+									"query": [
+										{
+											"key": "author",
+											"value": "sed nostrud"
+										},
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/by-author?author=sed nostrud&page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"by-author"
+									],
+									"query": [
+										{
+											"key": "author",
+											"value": "sed nostrud"
+										},
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/by-author?author=sed nostrud&page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"by-author"
+									],
+									"query": [
+										{
+											"key": "author",
+											"value": "sed nostrud"
+										},
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Getting all Ted talks with pagination",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/ted-talks/all?page=2&size=5&sort=viewCount,desc",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"ted-talks",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								},
+								{
+									"key": "sort",
+									"value": "viewCount,desc"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/all?page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"all"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/all?page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"all"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ted-talks/all?page=<integer>&size=<integer>&sort=<string>,<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ted-talks",
+										"all"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>"
+										},
+										{
+											"key": "size",
+											"value": "<integer>"
+										},
+										{
+											"key": "sort",
+											"value": "<string>,<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8081/ksp",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: '1.0-20220605-01'
+      author: 'Elkhan Ibrahimov'
+      description: "creates ted_talk table"
+      changes:
+        - createTable:
+            tableName: TED_TALK
+            columns:
+              - column:
+                  name: ID
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: TED_TALK_PK
+                    nullable: false
+              - column:
+                  name: TITLE
+                  type: VARCHAR(1000)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: AUTHOR
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: TALK_DATE
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: VIEWS
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                  defaultValue: '0'
+              - column:
+                  name: LIKES
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                  defaultValue: '0'
+              - column:
+                  name: LINK
+                  type: VARCHAR(1000)
+                  constraints:
+                    nullable: false
