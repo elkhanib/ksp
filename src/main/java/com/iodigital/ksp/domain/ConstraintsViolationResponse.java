@@ -21,4 +21,8 @@ public class ConstraintsViolationResponse {
     public ConstraintsViolationResponse(ConstraintViolation<?> constraintViolation) {
         this(constraintViolation.getPropertyPath().toString(), constraintViolation.getMessageTemplate());
     }
+
+    public static ConstraintsViolationResponse of(String propertyName, String message) {
+        return new ConstraintsViolationResponse(propertyName, message);
+    }
 }
