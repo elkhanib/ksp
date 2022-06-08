@@ -12,7 +12,8 @@ Please follow below steps to run project.
 * change directory to go to project's folder
 * run `gradlew clean dockerBuild`
 * run `docker-compose up -d`
-  It will run in docker machine, and service will be available at: http://localhost:8081/ksp/swagger-ui/index.html
+
+It will run in docker machine, and service will be available at: http://localhost:8081/ksp/swagger-ui/index.html
 
 ### How to test it?
 Postman collection included in postman folder, import it to your postman to see request and response samples.
