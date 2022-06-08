@@ -40,6 +40,56 @@ class QueryIntegrationTest {
     }
 
     @Test
+    @DisplayName("it gets all ted-talks using pagination")
+    void getAllTalks() throws Exception {
+        //Act
+        mockMvc.perform(get(BASE_URL + "/all?page=0&size=2&sort=viewCount,desc"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.content.length()").value(2))
+                .andExpect(jsonPath("$.totalElements", equalTo(500)))
+                .andExpect(jsonPath("$.totalPages", equalTo(250)))
+                .andExpect(jsonPath("$.number", equalTo(0)))
+                .andExpect(jsonPath("$.sort.sorted", equalTo(true)))
+                .andExpect(jsonPath("$.content.[0].id", equalTo(459)))
+                .andExpect(jsonPath("$.content.[0].title", equalTo("What causes dandruff, and how do you get rid of it?")))
+                .andExpect(jsonPath("$.content.[0].author", equalTo("Thomas L. Dawson")))
+                .andExpect(jsonPath("$.content.[0].talkDate", equalTo("2021-02-01")))
+                .andExpect(jsonPath("$.content.[0].viewCount", equalTo(10000000)))
+                .andExpect(jsonPath("$.content.[0].likeCount", equalTo(315000)))
+                .andExpect(jsonPath("$.content.[0].link", equalTo("https://ted.com/talks/thomas_l_dawson_what_causes_dandruff_and_how_do_you_get_rid_of_it")))
+                .andExpect(jsonPath("$.content.[1].id", equalTo(158)))
+                .andExpect(jsonPath("$.content.[1].title", equalTo("Countdown Global Livestream 2021")))
+                .andExpect(jsonPath("$.content.[1].author", equalTo("TED")))
+                .andExpect(jsonPath("$.content.[1].talkDate", equalTo("2021-10-01")))
+                .andExpect(jsonPath("$.content.[1].viewCount", equalTo(6100000)))
+                .andExpect(jsonPath("$.content.[1].likeCount", equalTo(183000)))
+                .andExpect(jsonPath("$.content.[1].link", equalTo("https://ted.com/talks/ted_countdown_global_livestream_2021")));
+
+        //Continuing to get dat
+        mockMvc.perform(get(BASE_URL + "/all?page=1&size=2&sort=viewCount,desc"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.content.length()").value(2))
+                .andExpect(jsonPath("$.totalElements", equalTo(500)))
+                .andExpect(jsonPath("$.totalPages", equalTo(250)))
+                .andExpect(jsonPath("$.number", equalTo(1)))
+                .andExpect(jsonPath("$.sort.sorted", equalTo(true)))
+                .andExpect(jsonPath("$.content.[0].id", equalTo(264)))
+                .andExpect(jsonPath("$.content.[0].title", equalTo("How every child can thrive by five")))
+                .andExpect(jsonPath("$.content.[0].author", equalTo("Molly Wright")))
+                .andExpect(jsonPath("$.content.[0].talkDate", equalTo("2021-07-01")))
+                .andExpect(jsonPath("$.content.[0].viewCount", equalTo(5900000)))
+                .andExpect(jsonPath("$.content.[0].likeCount", equalTo(177000)))
+                .andExpect(jsonPath("$.content.[0].link", equalTo("https://ted.com/talks/molly_wright_how_every_child_can_thrive_by_five")))
+                .andExpect(jsonPath("$.content.[1].id", equalTo(318)))
+                .andExpect(jsonPath("$.content.[1].title", equalTo("Why do we have hair in such random places?")))
+                .andExpect(jsonPath("$.content.[1].author", equalTo("Nina G. Jablonski")))
+                .andExpect(jsonPath("$.content.[1].talkDate", equalTo("2021-06-01")))
+                .andExpect(jsonPath("$.content.[1].viewCount", equalTo(4600000)))
+                .andExpect(jsonPath("$.content.[1].likeCount", equalTo(138000)))
+                .andExpect(jsonPath("$.content.[1].link", equalTo("https://ted.com/talks/nina_g_jablonski_why_do_we_have_hair_in_such_random_places")));
+    }
+
+    @Test
     @DisplayName("it finds ted-talk by title contains with case-insensitivity")
     void findByTitle() throws Exception {
         //Act
