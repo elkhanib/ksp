@@ -1,3 +1,4 @@
+
 server:
   servlet:
     context-path: '/ksp'
@@ -21,6 +22,8 @@ spring:
       ddl-auto: validate
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #overriding default value which uses lower-cased object name
+  profiles:
+    active: 'docker'
 
 hibernate:
   cache:

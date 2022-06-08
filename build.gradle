@@ -59,8 +59,7 @@ task dockerFile(type: Dockerfile, dependsOn: assemble) {
     runCommand 'apk add --no-cache openjdk11'
     copyFile "build/libs/ksp-1.0.0.jar", '/app/'
     workingDir '/app/'
-    entryPoint 'java'
-    defaultCommand '-jar', "/app/ksp-1.0.0.jar"
+    entryPoint 'java', '-Dspring.profiles.active=docker', '-jar', "/app/ksp-1.0.0.jar"
 }
 
 task dockerBuild(type: DockerBuildImage, dependsOn: dockerFile) {
