@@ -1,13 +1,12 @@
 # KSP - Knowledge Sharing Platform!
 
 ---
-KSP is a knowledge sharing platform where [iO](https://www.iodigital.com/en/home) colleagues (hopefully including me) can keep their curiosity going. As a MVP, we included only TedTalks, but its designed with _package by future_ pattern, which makes easy to add a new features.
+KSP is a knowledge sharing platform where [iO](https://www.iodigital.com/en/home) colleagues (hopefully including me) can keep their curiosity going on. As MVP/pilot, I've included only TedTalks, but it's designed with _package by future_ pattern, which makes easy to add a new features.
 </br></br>
 
 ### Requirements
 ___
-If you're a developer you will need a JDK 11 version and docker installed on your machine.
-If you're a business guy, or QA, or someone that only interested in BlackBox, you will need just docker installed machine to run application.
+You will need a JDK 11 version and docker installed on your machine.
 </br></br>
 
 ### How to run it?
@@ -18,11 +17,12 @@ Please follow below steps to run project.
 * run `gradlew clean dockerBuild`
 * run `docker-compose up -d`
 
-It will run in docker machine, and service will be available at: http://localhost:8081/ksp/swagger-ui/index.html
+It will run in docker machine, and service will be available at: [localhost:8081](http://localhost:8081/ksp/swagger-ui/index.html])
 </br></br>
 
 ### How to test it?
-Postman collection included in postman folder, import it to your postman to see request and response samples.
+[Postman collection](postman/ksp-v1.postman_collection.json) included in project's root folder, import it to your postman to see request and response samples. </br>
+Also included two ([docker](postman/docker.postman_environment.json) and [local](postman/local.postman_environment.json)) environment files. 
 </br></br>
 
 ### Issues

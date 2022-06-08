@@ -17,7 +17,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: TITLE
-                  type: VARCHAR(1000)
+                  type: VARCHAR(512)
                   constraints:
                     nullable: false
               - column:
@@ -44,6 +44,20 @@ databaseChangeLog:
                   defaultValue: '0'
               - column:
                   name: LINK
-                  type: VARCHAR(1000)
+                  type: VARCHAR(512)
                   constraints:
                     nullable: false
+  - changeSet:
+      id: '1.0-20220605-02'
+      author: 'Elkhan Ibrahimov'
+      description: "creates index in the ted_talk table for title column "
+      changes:
+        - createIndex:
+            clustered: true
+            columns:
+              - column:
+                  name: TITLE
+            indexName: IDX_TED_TALK_TITLE
+            tableName: TED_TALK
+            tablespace: A String
+            unique: false

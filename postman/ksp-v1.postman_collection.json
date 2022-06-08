@@ -428,7 +428,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 3044444444444,\n    \"talkDate\": \"2033-12-01\",\n    \"likeCount\": 999999999999,\n    \"author\": \"Elkhan Ibrahimov\"\n}",
+							"raw": "{\n    \"id\": 3044444444444,\n    \"talkDate\": \"2033-12-01\",\n    \"viewCount\": 5,\n    \"author\": \"Elkhan Ibrahimov\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -436,14 +436,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/v1/ted-talks/3043",
+							"raw": "{{baseUrl}}/v1/ted-talks/3042",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"v1",
 								"ted-talks",
-								"3043"
+								"3042"
 							]
 						}
 					},
@@ -1355,7 +1355,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/v1/ted-talks/all?page=2&size=5&sort=viewCount,desc",
+							"raw": "{{baseUrl}}/v1/ted-talks/all?page=0&size=2&sort=viewCount,desc",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1367,11 +1367,11 @@
 							"query": [
 								{
 									"key": "page",
-									"value": "2"
+									"value": "0"
 								},
 								{
 									"key": "size",
-									"value": "5"
+									"value": "2"
 								},
 								{
 									"key": "sort",
