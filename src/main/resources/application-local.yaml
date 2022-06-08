@@ -1,29 +1,8 @@
 server:
-  servlet:
-    context-path: '/ksp'
   port: 8082
 
 spring:
-  main:
-    banner-mode: off
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: ${DB_URL:jdbc:mysql://localhost:13306/ksp_app?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8}
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:password}
-  jpa:
-    database: mysql
-    open-in-view: false
-    database-platform: org.hibernate.dialect.MySQL5Dialect
-    show-sql: true
-    hibernate:
-      ddl-auto: validate
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #overriding default value which uses lower-cased object name
-
-hibernate:
-  cache:
-    use_second_level_cache: true
-    region:
-      factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+    url: jdbc:mysql://localhost:13306/ksp_app?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: password

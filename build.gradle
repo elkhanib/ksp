@@ -37,7 +37,6 @@ dependencies {
     implementation "org.springdoc:springdoc-openapi-ui:${openApiVersion}"
     implementation "org.liquibase:liquibase-core:${liquibaseVersion}"
     implementation "org.modelmapper:modelmapper:${modelmapperVersion}"
-
     implementation "org.hibernate:hibernate-ehcache:${hibernateEhCacheVersion}"
 
     compileOnly "org.projectlombok:lombok:${lombokVersion}"

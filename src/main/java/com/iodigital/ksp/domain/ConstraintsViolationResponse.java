@@ -1,5 +1,6 @@
 package com.iodigital.ksp.domain;
 
+import javax.validation.ConstraintViolation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,5 +16,9 @@ public class ConstraintsViolationResponse {
 
     public ConstraintsViolationResponse(FieldError error) {
         this(error.getField(), error.getDefaultMessage());
+    }
+
+    public ConstraintsViolationResponse(ConstraintViolation<?> constraintViolation) {
+        this(constraintViolation.getPropertyPath().toString(), constraintViolation.getMessageTemplate());
     }
 }
