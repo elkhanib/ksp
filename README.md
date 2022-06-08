@@ -19,10 +19,9 @@ It will run in docker machine, and service will be available at: http://localhos
 Postman collection included in postman folder, import it to your postman to see request and response samples.
 
 ### Issues
-* `PUT` and `DELETE` methods are not implemented
 * When we start the docker-compose, mysql container should be waited by all containers (like init-container in k8s deployment). Unfortunately I couldn't make a time to configure it correctly. So when you start docker-compose problably you will see some exceptions, but in a minute it will be worked :(
-* Integration tests can be implemented using [test-containers](https://www.testcontainers.org/)
-* Test coverage for can be increased. At the moment its 66% lines and 81% classes are covered. Some classes needs to be excluded from coverage report
+* H2 database used in integration testing. It can be replaced with [test-containers](https://www.testcontainers.org/)
+* Some (e.g: domain, entity, config, etc.) classes need to be excluded from coverage report
 * Improve open-api documentation
 * Use JWT to implement security
 

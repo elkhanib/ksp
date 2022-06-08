@@ -24,4 +24,6 @@ public interface TedTalkService {
     Page<TedTalk> findByLikeCounts(Long from, Long until, Pageable pageable);
 
     TedTalk partiallyUpdate(Long id, Map<String, Object> fields);
+
+    void delete(Long id);
 }

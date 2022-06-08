@@ -12,6 +12,7 @@ import javax.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -36,16 +37,21 @@ public class ExceptionHandler extends DefaultErrorAttributes {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(RecordNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public final ResponseEntity<Map<String, Object>> handle(RecordNotFoundException ex,
-                                                            WebRequest request) {
+    public final ResponseEntity<Map<String, Object>> handle(RecordNotFoundException ex, WebRequest request) {
         log.error("Resource not found {}", ex.getMessage());
         return ofType(request, HttpStatus.NOT_FOUND, ex.getMessage());
     }
 
+    @org.springframework.web.bind.annotation.ExceptionHandler(EmptyResultDataAccessException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public final ResponseEntity<Map<String, Object>> handle(EmptyResultDataAccessException ex, WebRequest request) {
+        log.error("Resource not found {}", ex.getMessage());
+        return ofType(request, HttpStatus.NOT_FOUND, "No record found with provided parameter(s)");
+    }
+
     @org.springframework.web.bind.annotation.ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public final ResponseEntity<Map<String, Object>> handle(ConstraintViolationException ex,
-                                                            WebRequest request) {
+    public final ResponseEntity<Map<String, Object>> handle(ConstraintViolationException ex, WebRequest request) {
         log.error("Constraints violated {}", ex.getMessage());
         List<ConstraintsViolationResponse> validationErrors = ex.getConstraintViolations()
                 .stream()
@@ -66,32 +72,28 @@ public class ExceptionHandler extends DefaultErrorAttributes {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public final ResponseEntity<Map<String, Object>> handle(MethodArgumentTypeMismatchException ex,
-                                                            WebRequest request) {
+    public final ResponseEntity<Map<String, Object>> handle(MethodArgumentTypeMismatchException ex, WebRequest request) {
         log.error("Method arguments are not valid {}", ex.getMessage());
         return ofType(request, HttpStatus.BAD_REQUEST, ex.getMessage());
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(MismatchedInputException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public final ResponseEntity<Map<String, Object>> handle(MismatchedInputException ex,
-                                                            WebRequest request) {
+    public final ResponseEntity<Map<String, Object>> handle(MismatchedInputException ex, WebRequest request) {
         log.error("Mismatched inout {}", ex.getMessage());
         return ofType(request, HttpStatus.BAD_REQUEST, ex.getMessage());
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public final ResponseEntity<Map<String, Object>> handle(
-            MethodArgumentNotValidException ex,
-            WebRequest request) {
+    public final ResponseEntity<Map<String, Object>> handle(MethodArgumentNotValidException ex, WebRequest request) {
         List<ConstraintsViolationResponse> validationErrors = ex.getBindingResult()
                 .getFieldErrors()
                 .stream()
                 .map(ConstraintsViolationResponse::new)
                 .collect(Collectors.toList());
         log.error("Constraints are violated", ex);
-        return ofType(request, HttpStatus.BAD_REQUEST, "Argument validation failed", validationErrors);
+        return ofType(request, HttpStatus.BAD_REQUEST, ARGUMENT_VALIDATION_FAILED, validationErrors);
     }
 
     protected ResponseEntity<Map<String, Object>> ofType(WebRequest request, HttpStatus status, String message) {

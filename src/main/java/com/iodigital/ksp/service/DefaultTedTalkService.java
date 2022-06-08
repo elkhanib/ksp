@@ -16,6 +16,7 @@ import javax.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -70,6 +71,7 @@ public class DefaultTedTalkService implements TedTalkService {
     }
 
     @Override
+    @Cacheable(value = "tedTalk", key = "#id")
     public TedTalk partiallyUpdate(Long id, Map<String, Object> fields) {
         TedTalk entity = talkRepository.findById(id).orElseThrow(RecordNotFoundException::new);
 
@@ -88,6 +90,12 @@ public class DefaultTedTalkService implements TedTalkService {
         var mergedEntity = mapper.map(dto, TedTalk.class);
         mergedEntity.setId(id);
         return talkRepository.save(mergedEntity);
+    }
+
+    @Override
+    @CacheEvict(value = "tedTalk")
+    public void delete(Long id) {
+        talkRepository.deleteById(id);
     }
 
     @SuppressWarnings("squid:S3011") // disabling sonar-lint due to field.setAccessible(true)

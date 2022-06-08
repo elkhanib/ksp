@@ -11,11 +11,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -91,16 +91,26 @@ class CommandIntegrationTest {
         var request = "{\"talkDate\": \"2033-12-01\",\"author\": \"Elkhan Ibrahimov\"}";
 
         //Act
-        mockMvc.perform(patch(BASE_URL + "/200")
+        mockMvc.perform(patch(BASE_URL + "/201")
                 .content(request)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", equalTo(200)))
-                .andExpect(jsonPath("$.title", equalTo("A more accurate way to calculate emissions")))
+                .andExpect(jsonPath("$.id", equalTo(201)))
+                .andExpect(jsonPath("$.title", equalTo("The brain science of obesity")))
                 .andExpect(jsonPath("$.author", equalTo("Elkhan Ibrahimov")))
                 .andExpect(jsonPath("$.talkDate", equalTo("2033-12-01")))
-                .andExpect(jsonPath("$.viewCount", equalTo(1400000)))
-                .andExpect(jsonPath("$.likeCount", equalTo(43000)))
-                .andExpect(jsonPath("$.link", equalTo("https://ted.com/talks/charlotte_degot_a_more_accurate_way_to_calculate_emissions")));
+                .andExpect(jsonPath("$.viewCount", equalTo(1700000)))
+                .andExpect(jsonPath("$.likeCount", equalTo(52000)))
+                .andExpect(jsonPath("$.link", equalTo("https://ted.com/talks/mads_tang_christensen_the_brain_science_of_obesity")));
+    }
+
+    @Test
+    @DisplayName("it deletes record from ted-talks by id")
+    void deleteRecord() throws Exception {
+
+        //Act
+        mockMvc.perform(delete(BASE_URL + "/444"))
+                .andExpect(status().isNoContent())
+                .andExpect(jsonPath("$").doesNotExist());
     }
 }
